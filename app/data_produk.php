@@ -165,7 +165,6 @@ while($produk = mysqli_fetch_array($query)){
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-
                             <div class="row">
                                 <div class="col-lg">
                                     <!-- text input -->
@@ -199,6 +198,9 @@ while($produk = mysqli_fetch_array($query)){
                             <div class="form-group">
                                 <label for="exampleInputFile">Gambar Produk</label>
                                 <?php echo '<img src="data:image/jpeg;base64,'.base64_encode($produk['gambar']).'" style="max-width: 100px; max-height: 100px;" />';?>
+                                <br>
+                                <label>Edit Gambar</label>
+                                <input type="file" name="gambar" class="form-control">
                             </div>
                         </div>
                         <!-- /.card-body -->
@@ -210,13 +212,15 @@ while($produk = mysqli_fetch_array($query)){
                     <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-primary">Edit Data</button>
                 </div>
+            </form>
         </div>
-        </form>
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
 </div>
 <?php } ?>
+<!-- end modal edit -->
+
 <!-- end modal edit -->
 
 

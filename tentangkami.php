@@ -3,8 +3,13 @@
 
 <?php
 include('koneksi.php');
-$query = "SELECT id, namaProduk, harga, gambar FROM produk ORDER BY harga";
-$result = mysqli_query($koneksi, $query);
+$result = mysqli_query($koneksi, "SELECT * FROM tentangkami LIMIT 1"); // Ambil data pertama saja
+$data = mysqli_fetch_assoc($result);
+?>
+
+<?php
+include('koneksi.php');
+$result = mysqli_query($koneksi, "SELECT * FROM produk ORDER BY RAND() LIMIT 4");
 ?>
 
 
@@ -14,55 +19,12 @@ $result = mysqli_query($koneksi, $query);
     <link rel="stylesheet" href="library/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="style/main.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/utilities/margin/margin.css">
+<link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/utilities/padding/padding.css">
     <title>Mandiri Konveksi | Homepage</title>
-
-    <style>
-    .products-section .products {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .products-section .product {
-        width: 350px;
-        height: 350px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        margin: 10px;
-    }
-
-    .products-section .product .bg-white {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 100%;
-    }
-
-    .products-section .product .product-image {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-    }
-
-    .products-section .product .product-image img {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: cover;
-    }
-
-    .products-section .product .desc-product {
-        padding: 10px;
-        text-align: center;
-    }
-
-    .products-section .desc-product p {
-        margin: 0;
-    }
-</style>
-
 
 </head>
 
@@ -86,36 +48,24 @@ $result = mysqli_query($koneksi, $query);
     <!-- /header -->
 
     <main>
-        <!--PRODUCTS-->
-        <section class="products-section">
-    <div class="container">
-        <div class="text-products row align-items-center">
-            <div class="title-product col-7 col-sm-6 col-md-9">
-                <h2 class="text-main">PRODUK KAMI</h2>
-            </div>
+  <!-- About 1 - Bootstrap Brain Component -->
+<section class="py-3 py-md-5">
+  <div class="container">
+    <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
+      <div class="col-12 col-lg-6 col-xl-5">
+        <img class="img-fluid rounded" loading="lazy" src="gambar/mandiri.jpg" alt="About 1">
+      </div>
+      <div class="col-12 col-lg-6 col-xl-7">
+        <div class="row justify-content-xl-center">
+          <div class="col-12 col-xl-11">
+          <h2 class="mb-3"><?php echo $data['judul']; ?></h2>
+          <p class="lead fs-4 mb-3"><?php echo $data['deskripsi']; ?></p>
+          </div>
         </div>
-
-        <div class="products row justify-content-center">
-            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                <div class="product col-12 col-sm-12 col-md-6 col-lg-3 mb-md-4 md-lg-0" data-aos="fade-up">
-                    <div class="bg-white">
-                        <div class="product-image text-center">
-                            <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['gambar']) . '" alt="product" class="img-fluid" />'; ?>
-                        </div>
-                        <div class="desc-product">
-                            <a href="detail_produk.php?id=<?php echo $row['id']; ?>">
-                                <p class="text-second"><?php echo $row['namaProduk']; ?></p>
-                                <p class="text-second">Rp.<?php echo $row['harga']; ?></p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            <?php } ?>
-        </div>
+      </div>
     </div>
+  </div>
 </section>
-
-        <!--Preview-->
     </main>
     <!--main-->
 
@@ -134,8 +84,8 @@ $result = mysqli_query($koneksi, $query);
                             <div>
                                 <div class="footer-item-content">
                                     <h3 class="text-main">Navigasi</h3>
-                                    <p><a href="index.php">Home</a></p>
-                                    <p><a href="index.php">Tentang Kami</a></p>
+                                    <p><a href="#">Home</a></p>
+                                    <p><a href="#">Tentang Kami</a></p>
                                     <p><a href="produk.php">Product</a></p>
                                 </div>
                             </div>
