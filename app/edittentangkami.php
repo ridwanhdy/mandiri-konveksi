@@ -35,21 +35,6 @@ if (!isset($_SESSION['username'])) {
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0">Dashboard</h1>
-                        </div><!-- /.col -->
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Dashboard v1</li>
-                            </ol>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </div>
             <!-- /.content-header -->
 
             <!-- Main content -->
@@ -58,35 +43,35 @@ if (!isset($_SESSION['username'])) {
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header">
-                                    <h3 class="card-title">DataTable with default features</h3>
-                                </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <br></br>
                                     <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Judul</th>
-                                                <th>Deskripsi</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                              $query = mysqli_query($koneksi,"SELECT * FROM tentangkami");
-                                              while($produk = mysqli_fetch_array($query)){
-                                              ?>
-                                            <tr>
-                                                <td width='5%'><?php echo $produk['id'];?></td>
-                                                <td><?php echo $produk['judul'];?></td>
-                                                <td><?php echo substr($produk['deskripsi'], 0, 200); ?></td>
-                                                <td><a class="btn btn-primary" style="margin-right: 5px;" data-toggle="modal"
-                                                        data-target="#modal-edit<?php echo $produk['id']; ?>">Edit</a>
-                                            </tr>
-                                            <?php } ?>
-                                        </tbody>
+                                    <thead>
+    <tr>
+        <th>No</th>
+        <th>Judul</th>
+        <th>Deskripsi</th>
+        <th>Gambar</th>
+        <th>Aksi</th>
+    </tr>
+</thead>
+<tbody>
+    <?php
+    $query = mysqli_query($koneksi, "SELECT * FROM tentangkami");
+    while ($produk = mysqli_fetch_array($query)) {
+    ?>
+    <tr>
+        <td width='5%'><?php echo $produk['id']; ?></td>
+        <td><?php echo $produk['judul']; ?></td>
+        <td><?php echo substr($produk['deskripsi'], 0, 200); ?></td>
+        <td><img src="data:image/jpeg;base64,<?php echo base64_encode($produk['gambar']); ?>" alt="Gambar" width="100"></td>
+        <td><a class="btn btn-primary" style="margin-right: 5px;" data-toggle="modal"
+                data-target="#modal-edit<?php echo $produk['id']; ?>">Edit</a>
+        </td>
+    </tr>
+    <?php } ?>
+</tbody>
+
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
@@ -106,7 +91,7 @@ if (!isset($_SESSION['username'])) {
         <!-- modal edit -->
         <?php
 $query = mysqli_query($koneksi, "SELECT * FROM tentangkami");
-while($data = mysqli_fetch_array($query)){
+while ($data = mysqli_fetch_array($query)) {
 ?>
 <div class="modal fade" id="modal-edit<?php echo $data['id']; ?>">
     <div class="modal-dialog modal-lg">
@@ -117,7 +102,7 @@ while($data = mysqli_fetch_array($query)){
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post" action="edit_data.php">
+            <form method="post" action="edit_data.php" enctype="multipart/form-data">
                 <div class="modal-body">
                     <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
                     <div class="form-group">
@@ -127,6 +112,11 @@ while($data = mysqli_fetch_array($query)){
                     <div class="form-group">
                         <label>Deskripsi</label>
                         <textarea name="deskripsi" class="form-control"><?php echo $data['deskripsi']; ?></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Gambar</label>
+                        <input type="file" name="gambar" class="form-control" onchange="previewImage(this, 'preview<?php echo $data['id']; ?>')">
+                        <img id="preview<?php echo $data['id']; ?>" src="data:image/jpeg;base64,<?php echo base64_encode($data['gambar']); ?>" alt="Preview Gambar" width="100" class="mt-3">
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">
@@ -140,6 +130,7 @@ while($data = mysqli_fetch_array($query)){
     <!-- /.modal-dialog -->
 </div>
 <?php } ?>
+
 
         <footer class="main-footer">
             <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.
@@ -168,6 +159,23 @@ while($data = mysqli_fetch_array($query)){
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
+
+
+    function previewImage(input, previewId) {
+        var preview = document.getElementById(previewId);
+        var file = input.files[0];
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+
+
     </script>
 </body>
 

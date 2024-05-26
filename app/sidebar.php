@@ -25,6 +25,12 @@
                             <p>Edit Tentang Kami</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="./editartikel.php" class="nav-link active">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Edit Artikel</p>
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ul>

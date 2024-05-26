@@ -7,12 +7,6 @@ $result = mysqli_query($koneksi, "SELECT * FROM tentangkami LIMIT 1"); // Ambil 
 $data = mysqli_fetch_assoc($result);
 ?>
 
-<?php
-include('koneksi.php');
-$result = mysqli_query($koneksi, "SELECT * FROM produk ORDER BY RAND() LIMIT 4");
-?>
-
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,9 +15,9 @@ $result = mysqli_query($koneksi, "SELECT * FROM produk ORDER BY RAND() LIMIT 4")
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/utilities/margin/margin.css">
-<link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/utilities/padding/padding.css">
+    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/utilities/margin/margin.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/utilities/padding/padding.css">
     <title>Mandiri Konveksi | Homepage</title>
 
 </head>
@@ -40,6 +34,7 @@ $result = mysqli_query($koneksi, "SELECT * FROM produk ORDER BY RAND() LIMIT 4")
                 <ul>
                     <li><a href="index.php">Home</a></li>
                     <li><a href="tentangkami.php">Tentang Kami</a></li>
+                    <li><a href="artikel.php">Artikel</a></li>
                     <li><a href="produk.php">Product</a></li>
                 </ul>
             </div>
@@ -48,24 +43,24 @@ $result = mysqli_query($koneksi, "SELECT * FROM produk ORDER BY RAND() LIMIT 4")
     <!-- /header -->
 
     <main>
-  <!-- About 1 - Bootstrap Brain Component -->
-<section class="py-3 py-md-5">
-  <div class="container">
-    <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
-      <div class="col-12 col-lg-6 col-xl-5">
-        <img class="img-fluid rounded" loading="lazy" src="gambar/mandiri.jpg" alt="About 1">
-      </div>
-      <div class="col-12 col-lg-6 col-xl-7">
-        <div class="row justify-content-xl-center">
-          <div class="col-12 col-xl-11">
-          <h2 class="mb-3"><?php echo $data['judul']; ?></h2>
-          <p class="lead fs-4 mb-3"><?php echo $data['deskripsi']; ?></p>
+      <!-- About 1 - Bootstrap Brain Component -->
+      <section class="py-3 py-md-5">
+        <div class="container">
+          <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
+            <div class="col-12 col-lg-6 col-xl-5">
+              <img class="img-fluid rounded" loading="lazy" src="data:image/jpeg;base64,<?php echo base64_encode($data['gambar']); ?>" alt="About 1">
+            </div>
+            <div class="col-12 col-lg-6 col-xl-7">
+              <div class="row justify-content-xl-center">
+                <div class="col-12 col-xl-11">
+                  <h2 class="mb-3"><?php echo $data['judul']; ?></h2>
+                  <p class="lead fs-4 mb-3"><?php echo nl2br($data['deskripsi']); ?></p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
     </main>
     <!--main-->
 
@@ -131,8 +126,8 @@ $result = mysqli_query($koneksi, "SELECT * FROM produk ORDER BY RAND() LIMIT 4")
     </footer>
 
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-	<script src="library/bootstrap/js/bootstrap.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="library/bootstrap/js/bootstrap.min.js"></script> -->
     <script src="script/index.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>

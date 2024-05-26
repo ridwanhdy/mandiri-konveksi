@@ -32,6 +32,7 @@ $result = mysqli_query($koneksi, "SELECT * FROM produk ORDER BY RAND() LIMIT 4")
                 <ul>
                     <li><a href="index.php">Home</a></li>
                     <li><a href="tentangkami.php">Tentang Kami</a></li>
+                    <li><a href="artikel.php">Artikel</a></li>
                     <li><a href="produk.php">Product</a></li>
                 </ul>
             </div>
@@ -181,8 +182,8 @@ $result = mysqli_query($koneksi, "SELECT * FROM produk ORDER BY RAND() LIMIT 4")
     <!--main-->
 
     <footer>
-        <div class="container">
-            <div class="footer-content row mb-4">
+        <div class="footer-content container-lg">
+            <div class="row mb-4">
                 <div class="footer-brand col-12 col-sm-12 col-md-3 col-lg-3">
                     <div>
                         <h1 class="text-main">MANDIRI KONVEKSI</h1>
@@ -226,8 +227,9 @@ $result = mysqli_query($koneksi, "SELECT * FROM produk ORDER BY RAND() LIMIT 4")
                     </div>
                 </div>
             </div>
-
-            <div class="copyright-section border-top">
+        </div>
+        <div class="copyright-section border-top">
+            <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <div class="copyright-content text-center mt-4">

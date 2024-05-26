@@ -76,8 +76,9 @@ $result = mysqli_query($koneksi, $query);
             </div>
             <div class="links">
                 <ul>
-                    <li><a href="index.php">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                     <li><a href="tentangkami.php">Tentang Kami</a></li>
+                    <li><a href="artikel.php">Artikel</a></li>
                     <li><a href="produk.php">Product</a></li>
                 </ul>
             </div>

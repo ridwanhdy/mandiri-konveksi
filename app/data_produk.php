@@ -5,9 +5,6 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">DataTable with default features</h3>
-                    </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-lg">

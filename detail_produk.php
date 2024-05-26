@@ -14,15 +14,16 @@
     <header>
         <nav class="main-nav">
             <div class="brand text-main">
-                <a href="#">
+                <a href="index.php">
                     <h1>MANDIRI KONVEKSI</h1>
                 </a>
             </div>
             <div class="links">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Tentang Kami</a></li>
-                    <li><a href="#">Product</a></li>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="tentangkami.php">Tentang Kami</a></li>
+                    <li><a href="artikel.php">Artikel</a></li>
+                    <li><a href="produk.php">Product</a></li>
                 </ul>
             </div>
         </nav>
@@ -44,14 +45,16 @@
                 ?>
                 <div class="row">
                     <div class="col-md-6">
-                        <img src="data:image/jpeg;base64,<?php echo base64_encode($row['gambar']); ?>" class="img-fluid"
-                            alt="Gambar Produk">
+                        <img src="data:image/jpeg;base64,<?php echo base64_encode($row['gambar']); ?>" class="img-fluid" alt="Gambar Produk">
                     </div>
                     <div class="col-md-6">
                         <h2><?php echo $row['namaProduk']; ?></h2>
                         <p><?php echo $row['deskripsi']; ?></p>
                         <h3>Harga: Rp.<?php echo $row['harga']; ?></h3>
-                        <button class="btn btn-primary">Chat Penjual</button>
+                        <button class="btn btn-primary">
+                            <img src="gambar/wa.png" alt="WhatsApp Logo" style="width: 20px; height: 20px; margin-right: 8px;">
+                            Chat Penjual
+                        </button>
                     </div>
                 </div>
                 <?php
@@ -128,8 +131,8 @@
     </footer>
 
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-	<script src="library/bootstrap/js/bootstrap.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="library/bootstrap/js/bootstrap.min.js"></script> -->
     <script src="script/index.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
